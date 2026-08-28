@@ -1,0 +1,25 @@
+# Render Blueprint — deploys the static Vite build as a Static Site.
+# See: https://render.com/docs/blueprint-spec
+#
+# To deploy:
+#   1. Push this repo to GitHub (or any git provider Render can read).
+#   2. In Render dashboard click "New + > Blueprint" and pick the repo.
+#   3. Set the environment variables (VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY)
+#      on the Static Site service, then deploy.
+
+services:
+  - type: web
+    name: trace-landing
+    runtime: static
+    repo: https://github.com/itsyu5668-sys/trace-cli # replace with your real repo
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_SUPABASE_URL
+        sync: false # set in dashboard; but you can also bake a default below
+      - key: VITE_SUPABASE_ANON_KEY
+        sync: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

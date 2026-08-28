@@ -1,0 +1,6 @@
+{
+  "name": "Trace",
+  "description": "AI agent stack trace interceptor and auto-clipboard utility for developers.",
+  "requestFramePermissions": ["clipboard-write", "clipboard-read"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
